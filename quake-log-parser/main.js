@@ -10,7 +10,7 @@ const results = Object.keys(games).map(gameID => {
         game_id: gameID,
         total_kills: game.total_kills,
         players: game.getPlayers(),
-        points: game.getSortedPoints(),
+        ranking: game.getSortedPoints(),
         kills_by_mean: game.kills_by_mean
     };
 });

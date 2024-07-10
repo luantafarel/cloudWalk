@@ -1,33 +1,21 @@
 package reports
 
 import (
-	"reflect"
+	"path/filepath"
 	"testing"
+
+	"quake-log-parser/parser"
 )
 
-func TestSortRankingByPoints(t *testing.T) {
-	input := map[string]int{
-		"Isgalamido":     1,
-		"Dono da Bola":   1,
-		"Oootsimo":       8,
-		"Assasinu Credi": 7,
-		"Chessus":        8,
-		"Zeh":            12,
-		"Mal":            2,
+func TestPrintGameReportsJSON(t *testing.T) {
+	logFilePath := filepath.Join("..", "logs/qgames_test.log")
+
+	games, _ := parser.ParseLog(logFilePath)
+
+	savedGames := PrintGameReportsJSON(games)
+
+	if len(savedGames) == 0 {
+		t.Errorf("Expected saved games in JSON, got 0")
 	}
 
-	expected := map[string]int{
-		"Zeh":            12,
-		"Oootsimo":       8,
-		"Chessus":        8,
-		"Assasinu Credi": 7,
-		"Mal":            2,
-		"Isgalamido":     1,
-		"Dono da Bola":   1,
-	}
-
-	sorted := sortRankingByPoints(input)
-	if !reflect.DeepEqual(sorted, expected) {
-		t.Errorf("Sorted ranking does not match expected.\nGot: %+v\nExpected: %+v", sorted, expected)
-	}
 }

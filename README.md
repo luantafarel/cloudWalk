@@ -22,7 +22,7 @@
 ## `parser/parser.go`
 - **Purpose**: Orchestrates the parsing process.
 - **Functions**:
-  - `ParseLogs(logFile string) ([]Game, []Player)`: Reads the log file and returns parsed game and player data.
+  - `ParseLog(logFile string) ([]Game, []Player)`: Reads the log file and returns parsed game and player data.
   - `parseLine(line string) (Event, Action)`: Parses a single line from the log and extracts the event and action.
 
 ## `reports/report.go`
@@ -41,6 +41,12 @@ To run the project, while in the root folder of quake-log-parser run
 ```bash
     go mod init
     go run main.go
+```
+## Run Tests
+To run the project, while in the root folder of quake-log-parser run 
+```bash
+    go mod init
+    go test ./...
 ```
 
 # File Descriptions

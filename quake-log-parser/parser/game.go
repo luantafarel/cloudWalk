@@ -7,7 +7,7 @@ type Game struct {
 	KillsByMean map[string]int `json:"kills_by_mean"`
 }
 
-func NewGame() *Game {
+func NewGame() *Game { // Struct constructor for Game contains a slice of players, a map of points, and a map of kills by mean
 	return &Game{
 		Players:     []string{},
 		Points:      make(map[string]int),
@@ -15,11 +15,11 @@ func NewGame() *Game {
 	}
 }
 
-func (g *Game) AddPlayer(player string) {
-	for _, p := range g.Players {
-		if p == player {
+func (g *Game) AddPlayer(player string) { // AddPlayer method for Game struct
+	for _, p := range g.Players { // Check if player is already in the game
+		if p == player { // If player is already in the game, return
 			return
 		}
 	}
-	g.Players = append(g.Players, player)
+	g.Players = append(g.Players, player) // If player is not in the game, add player to the game
 }
